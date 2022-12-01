@@ -1,11 +1,13 @@
 package com.bridglabz;
 
+import java.util.Scanner;
+
 public class TicTokGame {
     public static void main(String[] args) {
         System.out.println("Welcome To TIC TOC Board Game");
             char[][] gameBoard = {{'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}};
-            printBOARD(gameBoard);
-            updateBoard(1,1,gameBoard);
+             playerMove(gameBoard);
+            playerMove(gameBoard);
         }
 
         public static void printBOARD(char [][] gameBoard){
@@ -64,4 +66,11 @@ public class TicTokGame {
                 break;
         }
         }
+        public static void playerMove(char[][] gameBoard){
+            System.out.println("Please make a move. (1-9)");
+            Scanner input =new Scanner(System.in);
+            int move =input.nextInt();
+            updateBoard(move,1,gameBoard);
+        }
+
 }
