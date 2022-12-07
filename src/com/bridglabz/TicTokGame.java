@@ -1,5 +1,6 @@
 package com.bridglabz;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTokGame {
@@ -139,6 +140,17 @@ public class TicTokGame {
             default:
                 return false;
         }
+    }
+    public static void computerMove(char[][] gameBoard){
+        Random rand=new Random();
+        int move=rand.nextInt(9)+1;
+        boolean result=isValidmove(move,gameBoard);
+        while (result!=true){
+            move=rand.nextInt(9)+1;
+            result=isValidmove(move,gameBoard);
+        }
+        System.out.println("Computer moved at position "+move);
+        updateBoard(move,2,gameBoard);
     }
 
 }
