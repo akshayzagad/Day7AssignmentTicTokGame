@@ -70,7 +70,75 @@ public class TicTokGame {
             System.out.println("Please make a move. (1-9)");
             Scanner input =new Scanner(System.in);
             int move =input.nextInt();
+            boolean result = isValidmove(move,gameBoard);
+            while (result!=true){
+                System.out.println("Sorry! Invalid Move. Try again");
+                move =input.nextInt();
+                result = isValidmove(move,gameBoard);
+            }
             updateBoard(move,1,gameBoard);
         }
+
+    private static boolean isValidmove(int move, char[][] gameBoard) {
+        switch (move){
+            case  1:
+                if (gameBoard[0][0]=='_'){
+                    return true;
+                }else {
+                    return false;
+                }
+            case  2:
+                if (gameBoard[0][2]=='_'){
+                    return true;
+                }else {
+                    return false;
+                }
+            case  3:
+                if (gameBoard[0][4]=='_'){
+                    return true;
+                }else {
+                    return false;
+                }
+            case  4:
+                if (gameBoard[1][0]=='_'){
+                    return true;
+                }else {
+                    return false;
+                }
+            case  5:
+                if (gameBoard[1][2]=='_'){
+                    return true;
+                }else {
+                    return false;
+                }
+            case  6:
+                if (gameBoard[1][4]=='_'){
+                    return true;
+                }else {
+                    return false;
+                }
+            case  7:
+                if (gameBoard[2][0]=='_'){
+                    return true;
+                }else {
+                    return false;
+                }
+            case  8:
+                if (gameBoard[2][1]=='_'){
+                    return true;
+                }else {
+                    return false;
+                }
+            case  9:
+                if (gameBoard[2][2]=='_'){
+                    return true;
+                }else {
+                    return false;
+                }
+
+            default:
+                return false;
+        }
+    }
 
 }
