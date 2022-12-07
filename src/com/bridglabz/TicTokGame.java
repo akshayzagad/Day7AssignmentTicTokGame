@@ -9,6 +9,7 @@ public class TicTokGame {
             char[][] gameBoard = {{'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}};
              updateBoard(2,2,gameBoard);
             playerMove(gameBoard);
+            computerMove(gameBoard);
         }
 
         public static void printBOARD(char [][] gameBoard){
