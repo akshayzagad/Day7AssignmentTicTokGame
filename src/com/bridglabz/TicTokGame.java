@@ -7,9 +7,20 @@ public class TicTokGame {
     public static void main(String[] args) {
         System.out.println("Welcome To TIC TOC Board Game");
             char[][] gameBoard = {{'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}};
-             updateBoard(2,2,gameBoard);
-            playerMove(gameBoard);
-            computerMove(gameBoard);
+             printBOARD(gameBoard);
+             boolean gameOver=false;
+             while (gameOver!=true){
+                 playerMove(gameBoard);
+                 gameOver=isGameOver(gameBoard);
+                 if (gameOver!=false){
+                     break;
+                 }
+                 computerMove(gameBoard);
+                 gameOver=isGameOver(gameBoard);
+                 if (gameOver!=false){
+                     break;
+                 }
+             }
         }
 
         public static void printBOARD(char [][] gameBoard){
