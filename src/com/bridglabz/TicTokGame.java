@@ -152,5 +152,79 @@ public class TicTokGame {
         System.out.println("Computer moved at position "+move);
         updateBoard(move,2,gameBoard);
     }
+    public static boolean isGameOver(char[][] gameBoard) {
+        if (gameBoard[0][0] == 'x' && gameBoard[0][2] == 'x' && gameBoard[0][4] == 'x') {//Horizantal line
+            System.out.println("Player Win");
+            return true;
+        }
+        if (gameBoard[0][0] == 'O' && gameBoard[0][2] == 'O' && gameBoard[0][4] == 'O') {
+            System.out.println("Computer Win");
+            return true;
+        }
+        if (gameBoard[1][0] == 'x' && gameBoard[1][2] == 'x' && gameBoard[1][4] == 'x') {
+            System.out.println("Player Win");
+            return true;
+        }
+        if (gameBoard[1][0] == 'O' && gameBoard[1][2] == 'O' && gameBoard[1][4] == 'O') {
+            System.out.println("Computer Win");
+            return true;
+        }
+        if (gameBoard[2][0] == 'x' && gameBoard[2][2] == 'x' && gameBoard[2][4] == 'x') {
+            System.out.println("Player Win");
+            return true;
+        }
+        if (gameBoard[2][0] == 'O' && gameBoard[2][2] == 'O' && gameBoard[2][4] == 'O') {
+            System.out.println("Computer Win");
+            return true;
+        }//vertical line
+        if (gameBoard[0][0] == 'x' && gameBoard[1][0] == 'x' && gameBoard[2][0] == 'x') {
+            System.out.println("Player Win");
+            return true;
+        }
+        if (gameBoard[0][0] == 'O' && gameBoard[1][0] == 'O' && gameBoard[2][0] == 'O') {
+            System.out.println("Computer Win");
+            return true;
+        }
+        if (gameBoard[0][2] == 'x' && gameBoard[1][2] == 'x' && gameBoard[2][2] == 'x') {
+            System.out.println("Player Win");
+            return true;
+        }
+        if (gameBoard[0][2] == 'O' && gameBoard[1][2] == 'O' && gameBoard[2][2] == 'O') {
+            System.out.println("Computer Win");
+            return true;
+        }
+        if (gameBoard[0][4] == 'x' && gameBoard[1][4] == 'x' && gameBoard[2][4] == 'x') {
+            System.out.println("Player Win");
+            return true;
+        }
+        if (gameBoard[0][4] == 'O' && gameBoard[1][4] == 'O' && gameBoard[2][4] == 'O') {
+            System.out.println("Computer Win");
+            return true;
+//            DIAGONALY
+        }
+        if (gameBoard[0][0] == 'x' && gameBoard[1][2] == 'x' && gameBoard[2][4] == 'x') {
+            System.out.println("Player Win");
+            return true;
+        }
+        if (gameBoard[0][0] == 'O' && gameBoard[1][2] == 'O' && gameBoard[2][4] == 'O') {
+            System.out.println("Computer Win");
+            return true;
+        }
+        if (gameBoard[0][4] == 'x' && gameBoard[1][2] == 'x' && gameBoard[2][0] == 'x') {
+            System.out.println("Player Win");
+            return true;
+        }
+        if (gameBoard[0][4] == 'O' && gameBoard[1][2] == 'O' && gameBoard[2][0] == 'O') {
+            System.out.println("Computer Win");
+            return true;
+        }
+        if (gameBoard[0][0] != '_' && gameBoard[0][2] != '_' && gameBoard[0][4] != '_' &&
+                gameBoard[1][0] != '_' && gameBoard[1][2] != '_' && gameBoard[1][4] != '_' &&
+                gameBoard[2][0] != '_' && gameBoard[2][2] != '_' && gameBoard[2][4] != '_') {
+            System.out.println("It is a Tie");
+            return true;
+        }
+        return false;
+    }
 
 }
