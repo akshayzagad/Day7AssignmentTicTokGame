@@ -4,25 +4,51 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class TicTokGame {
+    static int playerWon=0;
+    static int computerWon=0;
     public static void main(String[] args) {
         System.out.println("Welcome To TIC TOC Board Game");
-            char[][] gameBoard = {{'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}};
-             printBOARD(gameBoard);
-             boolean gameOver=false;
-             while (gameOver!=true){
-                 playerMove(gameBoard);
-                 gameOver=isGameOver(gameBoard);
-                 if (gameOver!=false){
-                     break;
-                 }
-                 computerMove(gameBoard);
-                 gameOver=isGameOver(gameBoard);
-                 if (gameOver!=false){
-                     break;
-                 }
-             }
+        System.out.println("Start The TIC TOC Board Game");
+        char[][] gameBoard = {{'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}, {'_', '|', '_', '|', '_'}};
+        printBOARD(gameBoard);
+        boolean gameOver = false;
+        boolean playAgain = true;
+        while (playAgain) {
+            while (gameOver != true) {
+                playerMove(gameBoard);
+                gameOver = isGameOver(gameBoard);
+                if (gameOver != false) {
+                    break;
+                }
+                computerMove(gameBoard);
+                gameOver = isGameOver(gameBoard);
+                if (gameOver != false) {
+                    break;
+                }
+            }
+            System.out.println("player Scores: "+playerWon);
+            System.out.println("computer Scores: "+computerWon);
+            System.out.println("Wold you like to play again Y/N");
+            Scanner input = new Scanner(System.in);
+            input.nextLine();
+            String result = input.nextLine();
+            switch (result){
+                case "Y":
+                    resetBoard(gameBoard);
+                    playAgain=true;
+                    gameOver=false;
+                    printBOARD(gameBoard);
+                    break;
+                case "N":
+                    playAgain=false;
+                    System.out.println("Thanks for playing");
+                    break;
+                default:
+                    break;
+            }
         }
 
+    }
         public static void printBOARD(char [][] gameBoard){
             for (int i = 0; i < gameBoard.length; i++) {
                 for (int j = 0; j < gameBoard[i].length; j++) {
@@ -167,67 +193,83 @@ public class TicTokGame {
     public static boolean isGameOver(char[][] gameBoard) {
         if (gameBoard[0][0] == 'x' && gameBoard[0][2] == 'x' && gameBoard[0][4] == 'x') {//Horizantal line
             System.out.println("Player Win");
+            playerWon++;
             return true;
         }
         if (gameBoard[0][0] == 'O' && gameBoard[0][2] == 'O' && gameBoard[0][4] == 'O') {
             System.out.println("Computer Win");
+            computerWon++;
             return true;
         }
         if (gameBoard[1][0] == 'x' && gameBoard[1][2] == 'x' && gameBoard[1][4] == 'x') {
             System.out.println("Player Win");
+            playerWon++;
             return true;
         }
         if (gameBoard[1][0] == 'O' && gameBoard[1][2] == 'O' && gameBoard[1][4] == 'O') {
             System.out.println("Computer Win");
+            computerWon++;
             return true;
         }
         if (gameBoard[2][0] == 'x' && gameBoard[2][2] == 'x' && gameBoard[2][4] == 'x') {
             System.out.println("Player Win");
+            playerWon++;
             return true;
         }
         if (gameBoard[2][0] == 'O' && gameBoard[2][2] == 'O' && gameBoard[2][4] == 'O') {
             System.out.println("Computer Win");
+            computerWon++;
             return true;
         }//vertical line
         if (gameBoard[0][0] == 'x' && gameBoard[1][0] == 'x' && gameBoard[2][0] == 'x') {
             System.out.println("Player Win");
+            playerWon++;
             return true;
         }
         if (gameBoard[0][0] == 'O' && gameBoard[1][0] == 'O' && gameBoard[2][0] == 'O') {
             System.out.println("Computer Win");
+            computerWon++;
             return true;
         }
         if (gameBoard[0][2] == 'x' && gameBoard[1][2] == 'x' && gameBoard[2][2] == 'x') {
             System.out.println("Player Win");
+            playerWon++;
             return true;
         }
         if (gameBoard[0][2] == 'O' && gameBoard[1][2] == 'O' && gameBoard[2][2] == 'O') {
             System.out.println("Computer Win");
+            computerWon++;
             return true;
         }
         if (gameBoard[0][4] == 'x' && gameBoard[1][4] == 'x' && gameBoard[2][4] == 'x') {
             System.out.println("Player Win");
+            playerWon++;
             return true;
         }
         if (gameBoard[0][4] == 'O' && gameBoard[1][4] == 'O' && gameBoard[2][4] == 'O') {
             System.out.println("Computer Win");
+            computerWon++;
             return true;
 //            DIAGONALY
         }
         if (gameBoard[0][0] == 'x' && gameBoard[1][2] == 'x' && gameBoard[2][4] == 'x') {
             System.out.println("Player Win");
+            playerWon++;
             return true;
         }
         if (gameBoard[0][0] == 'O' && gameBoard[1][2] == 'O' && gameBoard[2][4] == 'O') {
             System.out.println("Computer Win");
+            computerWon++;
             return true;
         }
         if (gameBoard[0][4] == 'x' && gameBoard[1][2] == 'x' && gameBoard[2][0] == 'x') {
             System.out.println("Player Win");
+            playerWon++;
             return true;
         }
         if (gameBoard[0][4] == 'O' && gameBoard[1][2] == 'O' && gameBoard[2][0] == 'O') {
             System.out.println("Computer Win");
+            computerWon++;
             return true;
         }
         if (gameBoard[0][0] != '_' && gameBoard[0][2] != '_' && gameBoard[0][4] != '_' &&
@@ -238,5 +280,15 @@ public class TicTokGame {
         }
         return false;
     }
-
+    public static void resetBoard(char [][] gameBoard){
+        gameBoard[0][0] = '_';
+        gameBoard[0][2] = '_';
+        gameBoard[0][4] = '_';
+        gameBoard[1][0] = '_';
+        gameBoard[1][2] = '_';
+        gameBoard[1][4] = '_';
+        gameBoard[2][0] = '_';
+        gameBoard[2][2] = '_';
+        gameBoard[2][4] = '_';
+    }
 }
